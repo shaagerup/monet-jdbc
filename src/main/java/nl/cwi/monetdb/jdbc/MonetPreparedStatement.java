@@ -996,18 +996,13 @@ public class MonetPreparedStatement
 		// get array position
 		int i = getParamIdx(idx);
 
-		// We need to shave off enough digits to bring ourselves to an
-		// acceptable precision if we currently have too many digits.
-		int digitsToShave = Math.max(0, x.precision() - digits[i]);
-		int targetScale = Math.min(scale[i], x.scale() - digitsToShave);
+		// round to the scale of the DB:
+		x = x.setScale(scale[i], RoundingMode.HALF_UP);
 
-		// However, if we need to shave off more digits than we have available
-		// to the right of the decimal point, then this is impossible.
-		if (targetScale < 0)
+		// if precision is now greater than that of the db, throw an error:
+		if (x.precision() > digits[i]) {
 			throw new SQLDataException("DECIMAL value exceeds allowed digits/scale: " + x.toPlainString() + " (" + digits[i] + "/" + scale[i] + ")", "22003");
-
-		// Reduction is possible via rounding; do it and we're good to go.
-		x = x.round(new MathContext(targetScale, RoundingMode.HALF_UP));
+		}
 
 		// MonetDB doesn't like leading 0's, since it counts them as part of
 		// the precision, so let's strip them off. (But be careful not to do

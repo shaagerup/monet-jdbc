@@ -49,18 +49,18 @@ final public class MonetDriver implements Driver {
 	/** The prefix of a MonetDB url */
 	private static final String MONETURL = "jdbc:monetdb://";
 	/** Major version of this driver */
-	private static final int DRIVERMAJOR = @JDBC_MAJOR@;
+	private static final int DRIVERMAJOR = 2;
 	/** Minor version of this driver */
-	private static final int DRIVERMINOR = @JDBC_MINOR@;
+	private static final int DRIVERMINOR = 18;
 	/** Version suffix string */
 	private static final String DRIVERVERSIONSUFFIX =
-		"@JDBC_VER_SUFFIX@ based on MCL v@MCL_MAJOR@.@MCL_MINOR@";
+		"SNAPSHOT based on MCL v2.18";
 	// We're not fully compliant, but what we support is compliant
 	/** Whether this driver is JDBC compliant or not */
 	private static final boolean MONETJDBCCOMPLIANT = false;
 
 	/** MonetDB default port to connect to */
-	private static final String PORT = "@JDBC_DEF_PORT@";
+	private static final String PORT = "50000";
 
 
 	// initialize this class: register it at the DriverManager
