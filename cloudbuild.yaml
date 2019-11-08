@@ -1,0 +1,13 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    id: Build and publish to artifactory
+    entrypoint: 'bash'
+    args: ['-c', 'docker build --build-arg ARTIFACTORY_USERNAME=ci --build-arg ARTIFACTORY_PASSWORD=$$ARTIFACTORY_PASSWORD .']
+    secretEnv: ['ARTIFACTORY_PASSWORD']
+options:
+  machineType: 'N1_HIGHCPU_8'
+timeout: 600s
+secrets:
+  - kmsKeyName: projects/cerno-245411/locations/global/keyRings/build-keyring/cryptoKeys/artifactory-key
+    secretEnv:
+      ARTIFACTORY_PASSWORD: CiQACHOf4RqQQ/aHxzcpEquH1vn4oZFf8SEjVX0UxWi4TQpbWGMSQwC3l04NN+KKzbZTyxyAPt9j/j23mvGuYNn9huN8hvX4krDt81y5zQ5Q/ChQVVyOPoAVSRXoj8RNP8XbnYGBzS6Zv3M=
