@@ -10,4 +10,4 @@ timeout: 600s
 secrets:
   - kmsKeyName: projects/cerno-245411/locations/global/keyRings/build-keyring/cryptoKeys/artifactory-key
     secretEnv:
-      ARTIFACTORY_PASSWORD: CiQACHOf4dhImZ8dIaKWd/rxewg0mKIhDsaoA9YWDK7YjjaLHawSRAC3l04NJzEWcCyCgn6g9M4V0B9xSUp2Fm+R/IgpZQXXkvrsx5NQCZOsyg8Fm7DilAkdEg5bIYek5aWwFCTweaJmX05S
+      ARTIFACTORY_PASSWORD: CiQACHOf4bS4UdOPyJuxc8ARmVGAs+ypKph71xPtPO4U4OskyNoSRQC3l04NY8SPIRQHn5HIUZ52OoKTKlcidaG/VR6cb7nSDlJxxf1coa9oJeZ8/f2D3UIQz1umCDItNCUX1ZARzrKlNuUFGA==
